@@ -1,0 +1,35 @@
+name: Process Uploaded CSV
+
+on:
+  push:
+    branches:
+      - uploads  # Trigger when changes are pushed to the "uploads" branch
+
+jobs:
+  process-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas
+
+      - name: Run the processing script
+        run: python update_script.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add players\ points.csv scorers.csv
+          git commit -m "Update player data from weekly upload"
+          git push origin main
