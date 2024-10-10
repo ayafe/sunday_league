@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunday League</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="upload-section">
+    <h3>Upload Weekly Update</h3>
+    <input type="file" id="weekly-update-file" accept=".csv">
+    <button onclick="processWeeklyUpdate()">Upload</button>
+</div>
+
+    <div class="container">
+        <h1>Sunday League Player Stats</h1>
+
+        <h2>Points Table</h2>
+        <table id="points-table">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Points</th>
+                    <th>View Stats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+
+        <h2>Goals Table</h2>
+        <table id="goals-table">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Total Goals</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+
+        <div id="player-stats" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Player Stats</h2>
+                <div id="stats-content">
+                    <!-- Player stats details will be shown here -->
+                </div>
+            </div>
+        </div>
+    </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
